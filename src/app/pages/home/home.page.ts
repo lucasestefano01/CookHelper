@@ -12,7 +12,7 @@ import { ToastController, LoadingController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   private loading: any;
-  private recipes = new Array<Recipe>();
+  public recipes = new Array<Recipe>();
   private recipeSubscription: Subscription;
 
   constructor(

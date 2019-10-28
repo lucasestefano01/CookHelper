@@ -10,7 +10,7 @@ export class RecipeService {
   private recipeCollections: AngularFirestoreCollection<Recipe>;
 
   constructor(private afs: AngularFirestore) {
-    this.recipeCollections = this.afs.collection<Recipe>('Recipes');
+    this.recipeCollections = this.afs.collection<Recipe>('Receitas');
    }
 
    getRecipes() {
@@ -25,4 +25,12 @@ export class RecipeService {
         })
       );
    }
+
+   addRecipe(recipe: Recipe){
+    return this.recipeCollections.add(recipe);
+   }
+
+   getRecipe(id: string) {
+    return this.recipeCollections.doc<Recipe>(id).valueChanges();
+  }
 }
