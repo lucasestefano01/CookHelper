@@ -18,6 +18,7 @@ export class AuthService {
   }
 
   logout(){
+    this.afa.auth.signOut();
   }
 
   getAuth(){
