@@ -4,18 +4,23 @@
         <ion-back-button></ion-back-button>
       </ion-buttons>
   
-      <ion-title>Detalhes da Receita</ion-title>
+      <ion-title>{{recipe.description}}</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <ion-content class="ion-padding">
     <ion-list>
+        <label><b>Ingredientes:</b></label>
       <ion-item>
-        <ion-input type="text" [(ngModel)]="recipe.description">Descrição: </ion-input>
+        <label>
+            <ion-input type="text" *ngFor="let quantidades of recipe.Quantidades" readonly>{{quantidades}}</ion-input>
+        </label>
       </ion-item>
-      <ion-item>
-          <ion-input type="text" [(ngModel)]="recipe.instructions">Instruções:</ion-input>
-        </ion-item>
+      <br>
+      <label><b>Modo de preparo:</b></label>
+      <ion-item *ngFor="let instructions of recipe.instructions">
+        <ion-textarea [(ngModel)]="instructions" readonly></ion-textarea>
+      </ion-item>
     </ion-list>
   </ion-content>
   

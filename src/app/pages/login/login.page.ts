@@ -22,8 +22,7 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   segmentChanged(event) {
     if (event.toElement.innerText === "LOGIN") {

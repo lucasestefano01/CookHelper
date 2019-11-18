@@ -1,4 +1,5 @@
 export interface Ingredient {
     id?: string;
-    name: string;
+    nome: string;
+    descricao: string;
 }

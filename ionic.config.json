@@ -1,5 +1,7 @@
 {
   "name": "cookHelper",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

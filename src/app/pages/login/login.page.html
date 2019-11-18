@@ -1,10 +1,10 @@
 <ion-content class="swiper-no-swiping">
-  <div class="container">
-    <img src="/assets/img/chef-icon.jpg" style="margin-left:100px">
+  <div class="container" [hidden]="keyboard.isVisible">
+    <img src="/assets/img/chef-icon.jpg" style="margin-left:65px;width:50%;">
 
     <ion-segment (click)="segmentChanged($event)" value="login">
-      <ion-segment-button value="login">
-        <ion-label>Login</ion-label>
+      <ion-segment-button  value="login">
+        <ion-label outline="dark">Login</ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="register">
@@ -36,10 +36,6 @@
       <div class="slide-inner ion-padding">
 
         <ion-item class="ion-margin-top">
-          <ion-input type="text" placeholder="Nome"></ion-input>
-        </ion-item>
-
-        <ion-item class="ion-margin-top">
           <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRegister.email"></ion-input>
         </ion-item>
 
@@ -55,8 +51,12 @@
     </ion-slide>
   </ion-slides>
 
-  <div class="background">
+  <div class="background" [hidden]="keyboard.isVisible">
     <div class="foods"></div>
   </div>
+
+  <div class="background-top">
+      <div class="foods"></div>
+    </div>
 
 </ion-content>

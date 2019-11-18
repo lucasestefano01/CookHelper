@@ -5,41 +5,60 @@
 </ion-header>
 
 <ion-content>
-    <ion-list *ngIf="!recipes.length">
-        <ion-item *ngFor="let item of [0, 1, 2]">
-          <ion-avatar slot="start">
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-avatar>
-          <ion-label>
-            <h3>
-              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-            </h3>
-            <p>
-              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-            </p>
-            <p>
-              <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    
-      <ion-list>
-        <ion-item-sliding *ngFor="let recipe of recipes">
-          <ion-item  [routerLink]="['/details', recipe.id]">
-            <ion-avatar slot="start">
-              <img src="/assets/img/food.png">
-            </ion-avatar>
-    
-            <ion-label>
-              Titulo:{{ recipe.title }}
-              <p>Categoria:{{ recipe.category }}</p>
-              <p>Descrição:{{ recipe.description }}</p>
-            </ion-label>
-          </ion-item>
-    
-        </ion-item-sliding>
-      </ion-list>
+  <ion-list class="col-lg-12">
+    <ion-item class="col-lg-6">
+      <ion-label>Categorias</ion-label>
+      <ion-select id="racas" [(ngModel)]="racas" (ionChange)="filterItems();">
+        <ion-select-option>Salgadas</ion-select-option>
+        <ion-select-option>Doces</ion-select-option>
+        <ion-select-option>Todas</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="col-lg-6">
+      <ion-label>Ingredientes</ion-label>
+      <ion-select interface="alert" id="ingredientes" [(ngModel)]="filteredIngredients" (ionChange)="teste()"
+        multiple="true">
+        <ion-select-option *ngFor="let ingrediente of ingredientes" [value]="ingrediente.id">{{ingrediente.nome}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!filteredRecipes.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let recipe of filteredRecipes">
+      <ion-item [routerLink]="['/details', recipe.id]">
+        <ion-avatar slot="start">
+          <img src="/assets/img/food.png">
+        </ion-avatar>
+
+        <ion-label>
+          Titulo:{{ recipe.title }}
+          <p>Categoria:{{ recipe.category }}</p>
+          <p>Descrição:{{ recipe.description }}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>
 
@@ -54,8 +73,8 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button  color="light" expand="block">
-            ADD Ingrediente
+          <ion-button (click)="clearFilters()" color="light" expand="block">
+            Limpar Filtros
           </ion-button>
         </ion-col>
       </ion-row>

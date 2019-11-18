@@ -25,7 +25,27 @@ ion-slides{
 
     .foods{
         position: absolute;
-        top: 150px;
+        top: 153px;
+        left:0;
+        right:0;
+        height: 135px;
+        background-image: url('/assets/img/background.jpg');
+        background-size:contain;
+    }
+
+
+}
+
+.background-top{
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 45%;
+
+    .foods{
+        position: absolute;
+        top: -450px;
         left:0;
         right:0;
         height: 135px;
@@ -33,4 +53,3 @@ ion-slides{
         background-size:contain;
     }
 }
-
